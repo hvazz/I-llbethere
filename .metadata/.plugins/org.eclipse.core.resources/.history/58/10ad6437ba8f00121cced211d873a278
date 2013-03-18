@@ -30,14 +30,10 @@ implements LoaderManager.LoaderCallbacks<Cursor> {
 			ContactsContract.Data.DISPLAY_NAME + " NOTNULL) AND (" +
 			ContactsContract.Data.DISPLAY_NAME + " != '' ))";
 
-	private DatabaseConnector dbCon;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		dbCon = DatabaseConnector.getInstance();
-		dbCon.toastMe("asdasddsadsa");
 		// Create a progress bar to display while the list loads
 		ProgressBar progressBar = new ProgressBar(this);
 		progressBar.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,

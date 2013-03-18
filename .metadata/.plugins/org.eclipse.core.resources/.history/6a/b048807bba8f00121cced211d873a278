@@ -37,7 +37,7 @@ implements LoaderManager.LoaderCallbacks<Cursor> {
 		super.onCreate(savedInstanceState);
 
 		dbCon = DatabaseConnector.getInstance();
-		dbCon.toastMe("asdasddsadsa");
+		dbCon.readDataBase();
 		// Create a progress bar to display while the list loads
 		ProgressBar progressBar = new ProgressBar(this);
 		progressBar.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
