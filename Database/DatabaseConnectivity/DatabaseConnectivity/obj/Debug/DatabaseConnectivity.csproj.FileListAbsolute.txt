@@ -1,0 +1,2 @@
+C:\Users\Morten\Documents\GitHub\I-llbethere\Database\DatabaseConnectivity\DatabaseConnectivity\bin\Debug\DatabaseConnectivity.exe.config
+C:\Users\Morten\Documents\GitHub\I-llbethere\Database\DatabaseConnectivity\DatabaseConnectivity\obj\Debug\DatabaseConnectivity.csprojResolveAssemblyReference.cache

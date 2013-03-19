@@ -3,6 +3,7 @@ package com.hvass.illbethere;
 import android.app.ActionBar.LayoutParams;
 import android.app.ListActivity;
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 public class MainActivity extends ListActivity
 implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -37,7 +39,7 @@ implements LoaderManager.LoaderCallbacks<Cursor> {
 		super.onCreate(savedInstanceState);
 
 		dbCon = DatabaseConnector.getInstance();
-		dbCon.toastMe("asdasddsadsa");
+		toastMe(dbCon.testConnectToDb());
 		// Create a progress bar to display while the list loads
 		ProgressBar progressBar = new ProgressBar(this);
 		progressBar.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
@@ -64,13 +66,24 @@ implements LoaderManager.LoaderCallbacks<Cursor> {
 		// or start a new one.
 		getLoaderManager().initLoader(0, null, this);
 	}
+	
+	public void toastMe(String s)
+	{
+		Context context = getApplicationContext();
+		CharSequence text = s;
+		int duration = Toast.LENGTH_SHORT;
+				
+		Toast toast = Toast.makeText(context, text, duration);
+		toast.show();
+	}
 
 	// Called when a new Loader needs to be created
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 		// Now create and return a CursorLoader that will take care of
 		// creating a Cursor for the data being displayed.
 		return new CursorLoader(this, ContactsContract.Data.CONTENT_URI,
-				PROJECTION, SELECTION, null, null);
+			PROJECTION, SELECTION, null, null);
+		
 	}
 
 	// Called when a previously created loader has finished loading

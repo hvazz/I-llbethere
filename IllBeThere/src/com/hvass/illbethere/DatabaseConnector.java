@@ -28,29 +28,22 @@ public class DatabaseConnector {
 		else return new DatabaseConnector();
 	}
 	
-	private void testConnectToDb() throws Exception
+	public String testConnectToDb()
 	{
 		
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			connect = DriverManager.getConnection(url);
+			connect = DriverManager.getConnection(url+user+password);
+			
+			return "Worked";
 		} catch (Exception e) {
-			throw e;
+			
 		} finally {
 			close();
 		}
-	}
-	
-	public void toastMe(String s)
-	{
-		//Context context = MainActivity.getApplicationContext();
-		CharSequence text = s;
-		int duration = Toast.LENGTH_SHORT;
-		
-		//Toast toast = Toast.makeText(context, text, duration);
-		//toast.show();
+		return "did not work";
 	}
 
 	public void readDataBase(){
