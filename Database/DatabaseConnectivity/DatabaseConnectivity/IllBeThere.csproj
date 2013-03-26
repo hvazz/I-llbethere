@@ -49,6 +49,7 @@
     <Compile Include="Server.cs" />
     <Compile Include="SpecialDeal.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="UserHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -10,8 +10,13 @@ namespace IllBeThere
     {
         static void Main(string[] args)
         {
-            DatabaseConnectivity dbCon = DatabaseConnectivity.GetInstance;
+            Server server = new Server();
             Console.ReadKey();
+        }
+
+        public Server()
+        {
+            DatabaseConnectivity dbCon = DatabaseConnectivity.GetInstance;
         }
     }
 }

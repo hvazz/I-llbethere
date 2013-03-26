@@ -1,0 +1,3 @@
+C:\Users\Aben\Documents\GitHub\I-llbethere\Database\DatabaseConnectivity\DatabaseConnectivity\bin\Debug\DatabaseConnectivity.exe.config
+C:\Users\Aben\Documents\GitHub\I-llbethere\Database\DatabaseConnectivity\DatabaseConnectivity\obj\Debug\DatabaseConnectivity.exe
+C:\Users\Aben\Documents\GitHub\I-llbethere\Database\DatabaseConnectivity\DatabaseConnectivity\obj\Debug\DatabaseConnectivity.pdb

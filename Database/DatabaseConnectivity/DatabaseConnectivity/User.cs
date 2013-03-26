@@ -8,5 +8,22 @@ namespace IllBeThere
 {
     class User
     {
+
+        private string name;
+
+        public User()
+        { 
+            
+        }
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+
+
+
     }
 }

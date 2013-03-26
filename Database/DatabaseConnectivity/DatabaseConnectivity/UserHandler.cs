@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace IllBeThere
 {
-    class AdditionalInfo
+    class UserHandler
     {
-        private string info;
 
-        public AdditionalInfo()
+        public UserHandler()
         { 
             
         }
 
-        public string Info
+        public User FindCurrentUser()
         {
-            get { return info; }
-            set { info = value; }
+            
+
+            return null;
         }
     }
 }

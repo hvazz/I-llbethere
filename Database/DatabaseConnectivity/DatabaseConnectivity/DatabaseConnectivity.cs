@@ -9,12 +9,10 @@ namespace IllBeThere
 {
     class DatabaseConnectivity
     {
-
-        
-
         private static DatabaseConnectivity instance;
         private SqlConnection connection;
         private string connectionString;
+        private enum Table { Bar="bartable", User="usertable", AdditionalInfo="add_info", OpeningHours="open_hours", SpecialDeals="spec_deal"}
 
         public static DatabaseConnectivity GetInstance
         {
@@ -95,57 +93,109 @@ namespace IllBeThere
         }
 
 //***************************************************** CREATE *********************************************************
-        public bool CreateBar()
+        public bool CreateBar(Bar bar)
+        {
+            string query ="INSERT INTO "+Table.Bar+" (name, address, image, user, add_info, spec_deal, openings) Values()";
+            return false;
+        }
+
+        public bool CreateUser(User user)
         {
             return false;
         }
 
-        public bool CreateUser()
+        public bool CreateAdditionalInfo(AdditionalInfo addInfo)
         {
             return false;
         }
 
-        public bool CreateAdditionalInfo()
+        public bool CreateOpeningHours(OpeningHours openHours)
         {
             return false;
         }
 
-        public bool CreateOpeningHours()
-        {
-            return false;
-        }
-
-        public bool CreateSpecialDeals()
+        public bool CreateSpecialDeals(SpecialDeal specialDeal)
         {
             return false;
         }
 //**********************************************************************************************************************
-//***************************************************** READ/GET (single) **********************************************
-        public bool GetSingleBar()
+//***************************************************** READ/GET (List) ************************************************
+        public bool GetBar(List<Bar> bars)
         {
             return false;
         }
 
-        public bool GetSingleUser()
+        public bool GetUser(List<User> user)
         {
             return false;
         }
 
-        public bool GetSingleAdditionalInfo()
+        public bool GetAdditionalInfo()
         {
             return false;
         }
 
-        public bool GetSingleOpeningHours()
+        public bool GetOpeningHours()
         {
             return false;
         }
 
-        public bool GetSingleSpecialDeals()
+        public bool GetSpecialDeals()
         {
             return false;
         }
 //**********************************************************************************************************************
+//***************************************************** UPDATE/EDIT ****************************************************
+        public bool UpdateBar()
+        {
+            return false;
+        }
 
+        public bool UpdateUser()
+        {
+            return false;
+        }
+
+        public bool UpdateAdditionalInfo()
+        {
+            return false;
+        }
+
+        public bool UpdateOpeningHours()
+        {
+            return false;
+        }
+
+        public bool UpdateSpecialDeals()
+        {
+            return false;
+        }
+//**********************************************************************************************************************
+//***************************************************** DELETE (List) **************************************************
+        public bool DeleteBar(List<Bar> bars)
+        {
+            return false;
+        }
+
+        public bool DeleteUser()
+        {
+            return false;
+        }
+
+        public bool DeleteAdditionalInfo()
+        {
+            return false;
+        }
+
+        public bool DeleteOpeningHours()
+        {
+            return false;
+        }
+
+        public bool DeleteSpecialDeals()
+        {
+            return false;
+        }
+//**********************************************************************************************************************
     }
 }
