@@ -107,8 +107,22 @@ namespace IllBeThere
         }
 
         public void DeleteOpeningHouers(List<OpeningHours> ohList)
+        {
+            foreach (OpeningHours oh in openings)
+            {
+                foreach (OpeningHours oh2 in ohList)
+                {
+                    if (DateTime.Compare(oh.Start, oh2.Start) == 0 && DateTime.Compare(oh.End, oh2.End) == 0) openings.Remove(oh);
+                }
+            }
+        }
+
+        public void AddOpeningHours(List<OpeningHours> ohList)
         { 
-            
+            foreach (OpeningHours oh in ohList)
+            {
+                openings.Add(oh);
+            }
         }
 
         public double EntryFee
