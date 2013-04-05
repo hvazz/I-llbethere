@@ -1,19 +1,64 @@
 * functions
 ** App Functions
-| Name             | Return or Not | To Be Returned        | Parameters | Comment                                                                    |
-|------------------+---------------+-----------------------+------------+----------------------------------------------------------------------------|
-| GetRelevantBars  | Yes           | A list/array          | don't know | we need to make a filter for "relevant bars" it can be sorted acording to  |
-|                  |               | of Bars               |            | everything from: location, what bars pays the most, most friends attending |
-|                  |               |                       |            | other stuff we come up with                                                |
-|------------------+---------------+-----------------------+------------+----------------------------------------------------------------------------|
-| GetBar           | Yes           | One single bar        | (int id)   |                                                                            |
-|------------------+---------------+-----------------------+------------+----------------------------------------------------------------------------|
-| Login            | Yes           | bool weteher login    |            |                                                                            |
-|                  |               | was successful of not |            |                                                                            |
-|------------------+---------------+-----------------------+------------+----------------------------------------------------------------------------|
-| CreateIllBeThere | no            | N/A                   |            | when the user Checks in at a bar                                           |
-
-
+| Name             | Return or Not | To Be Returned        | Parameters           | Comment                                                                    |
+|------------------+---------------+-----------------------+----------------------+----------------------------------------------------------------------------|
+| GetRelevantBars  | Yes           | A list/array          | don't know           | we need to make a filter for "relevant bars" it can be sorted acording to  |
+|                  |               | of Bars               |                      | everything from: location, what bars pays the most, most friends attending |
+|                  |               |                       |                      | other stuff we come up with                                                |
+|                  |               |                       |                      |                                                                            |
+|                  |               |                       |                      | This should only return the bar name, image and short description, maby    |
+|                  |               |                       |                      | wether the bar has a special deal or not.                                  |
+|------------------+---------------+-----------------------+----------------------+----------------------------------------------------------------------------|
+| GetBar           | Yes           | One single bar        | (int id)             | User when user clicks on a bar "advert" in his mainPage / search           |
+|------------------+---------------+-----------------------+----------------------+----------------------------------------------------------------------------|
+| Login            | Yes           | bool weteher login    | User.Username,       |                                                                            |
+|                  |               | was successful of not | User.password        |                                                                            |
+|------------------+---------------+-----------------------+----------------------+----------------------------------------------------------------------------|
+| CreateIllBeThere | no            | N/A                   | int user_id,         | when the user Checks in at a bar, an new "ill_be_there" ahs to be created  |
+|                  |               |                       | int bar_id,          | in the databese                                                            |
+|                  |               |                       | dateTime date        |                                                                            |
+|                  |               |                       | (possible location?) |                                                                            |
+|------------------+---------------+-----------------------+----------------------+------------------------- ---------------------------------------------------|
+| UpdateUser       | Yes           | bool wether the right | ind id,              | changing password/region                                                   |
+|                  |               | password was used     | string password,     |                                                                            |
+|                  |               | or not                | string newPassword   |                                                                            |
+|                  |               |                       | string newPassword2  |                                                                            |
+|                  |               |                       | string newRegion     |                                                                            |
+|------------------+---------------+-----------------------+----------------------+----------------------------------------------------------------------------|
+|                  |               |                       |                      |                                                                            |
    
 ** Server Functions
+| Name             | Return or Not | To be Returned        | Parameters      | Comment |
+|------------------+---------------+-----------------------+-----------------+---------|
+| CRUDBar          |               |                       |                 |         |
+|------------------+---------------+-----------------------+-----------------+---------|
+| CRUDUser         |               |                       |                 |         |
+|------------------+---------------+-----------------------+-----------------+---------|
+| CRUDIllBeThere   |               |                       |                 |         |
+|------------------+---------------+-----------------------+-----------------+---------|
+| CRUDOpening_hour |               |                       |                 |         |
+|------------------+---------------+-----------------------+-----------------+---------|
+| CRUDSpecial_deal |               |                       |                 |         |
+|------------------+---------------+-----------------------+-----------------+---------|
+| CheckUser        | Yes           | bool wether the       | string email,   |         |
+|                  |               | user can login or not | string password |         |
+|------------------+---------------+-----------------------+-----------------+---------|
+|                  |               |                       |                 |         |
+
+
 ** Database Functions
+| Name             | Return or Not | To be Returned | Parameters | Comment |
+|------------------+---------------+----------------+------------+---------|
+| CRUDBar          |               |                |            |         |
+|------------------+---------------+----------------+------------+---------|
+| CRUDUser         |               |                |            |         |
+|------------------+---------------+----------------+------------+---------|
+| CRUDillBeThere   |               |                |            |         |
+|------------------+---------------+----------------+------------+---------|
+| CRUDopening_hour |               |                |            |         |
+|------------------+---------------+----------------+------------+---------|
+| CRUDSpecial_deal |               |                |            |         |
+|------------------+---------------+----------------+------------+---------|
+|                  |               |                |            |         |
+
+
