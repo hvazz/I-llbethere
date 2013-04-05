@@ -146,36 +146,36 @@ namespace IllBeThere
 //***************************************************** CREATE *********************************************************
         public bool CreateBar(Bar bar)
         {
-            string query ="INSERT INTO "+Table.Bar+" (name, address, image, contact_info, additional_info)"+
-            " Values('"+bar.Name+"', '"+bar.Address+"', '"+bar.Image+"', '"+bar.ContactInfo+"', '"+bar.AdditionalInfo+"')";
+            string query ="INSERT INTO "+Table.Bar+
+            " Values('','"+bar.Name+"', '"+bar.Address+"', '"+bar.Image+"', '"+bar.ContactInfo+"', '"+bar.AdditionalInfo+"')";
             return ExecuteQuery(query);
         }
 
         public void CreateUser(User user)
         {
-            string query = "INSERT INTO "+Table.User+" (fName, lName, phone, email,)"+
-            " Values('"+user.ForeName+"', '"+user.LastName+"', '"+user.PhoneNumber+"', '"+user.Email+"')";
+            string query = "INSERT INTO "+Table.User+
+            " Values('', '"+user.ForeName+"', '"+user.LastName+"', '"+user.PhoneNumber+"', '"+user.Email+"')";
             ExecuteQuery(query);
         }
 
         public void CreateIllBeThere(User user, Bar bar, DateTime date)
         {
-            string query = "INSERT INTO "+Table.IllBeThere+" (user_id, bar_id, date)"+
-            " Values('"+user.ID+"', '"+bar.ID+"', '"+date+"')" ;
+            string query = "INSERT INTO "+Table.IllBeThere+
+            " Values('', '"+user.ID+"', '"+bar.ID+"', '"+date+"')" ;
             ExecuteQuery(query);
         }
 
         public void CreateOpeningHours(OpeningHours openHours)
         {
-            string query = "INSERT INTO "+Table.OpeningHour+" (times, date )"+
-            " Values('"+openHours.Times+"', '"+openHours.Date+"')";
+            string query = "INSERT INTO "+Table.OpeningHour+
+            " Values('', '"+openHours.Times+"', '"+openHours.Date+"')";
             ExecuteQuery(query);
         }
 
         public void CreateSpecialDeals(SpecialDeal specialDeal)
         {
-            string query = "INSERT INTO "+Table.SpecialDeal+" (string, from, to)"+
-            " Values('"+specialDeal.Info+"', '"+specialDeal.From+"', '"+specialDeal.To+"')";
+            string query = "INSERT INTO "+Table.SpecialDeal+
+            " Values('', '"+specialDeal.Info+"', '"+specialDeal.From+"', '"+specialDeal.To+"')";
             ExecuteQuery(query);
         }
 //**********************************************************************************************************************
@@ -220,11 +220,25 @@ namespace IllBeThere
         }
 //**********************************************************************************************************************
 //***************************************************** UPDATE/EDIT ****************************************************
-        public void UpdateBar(List<Bar> bars)
+        public void UpdateTable( string[] column, string[] value, List<IDHolder> IDs, Table table)
         {
-            
-        }
+            List<string> updates = new List<string>();
+            string barIDString = CombineIDs(ExtractId(IDs));
+            string doneUpdate = "";
 
+            for (int i = 0; i < column.Length; i++)
+            {
+                if (i == column.Length - 1) updates.Add(column[i] + " = '" + value[i] + "'");
+
+                else updates.Add("SET " + column[i] + " = '" + value[i] + "',");
+            }
+            
+            foreach (string s in updates){doneUpdate = doneUpdate + s;}
+
+            string query = "UPDATE "+table+" " + doneUpdate + " WHERE id IN (" + barIDString + ")";
+            ExecuteQuery(query); 
+        }
+        /*
         public void UpdateUser()
         {
             
@@ -243,7 +257,7 @@ namespace IllBeThere
         public void UpdateSpecialDeals()
         {
             
-        }
+        }*/
 //**********************************************************************************************************************
 //***************************************************** DELETE (List) **************************************************
         public void DeleteEntries(List<IDHolder> ids, Table target)

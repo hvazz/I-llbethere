@@ -11,12 +11,15 @@ namespace IllBeThere
         static void Main(string[] args)
         {
             Server server = new Server();
+            //server.dbCon.CreateBar
             Console.ReadKey();
         }
 
+        DatabaseConnectivity dbCon;
+
         public Server()
         {
-            DatabaseConnectivity dbCon = DatabaseConnectivity.GetInstance;
+            dbCon = DatabaseConnectivity.GetInstance;
         }
     }
 }

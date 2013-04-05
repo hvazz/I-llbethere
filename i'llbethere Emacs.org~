@@ -1,0 +1,12 @@
+* functions
+** App Functions
+| Name            | Return or Not | To Be Returned | Comment                                                                    |
+|-----------------+---------------+----------------+----------------------------------------------------------------------------|
+| getRelevantBars | Yes           | A list/array   | we need to make a filter for "relevant bars" it can be sorted acording to  |
+|                 |               | of Bars       | everything from: location, what bars pays the most, most friends attending |
+|                 |               |                | other stuff we come up with                                                |
+|-----------------+---------------+----------------+----------------------------------------------------------------------------|
+| getBar(int id)  | Yes           |                |                                                                            |
+   
+** Server Functions
+** Database Functions
