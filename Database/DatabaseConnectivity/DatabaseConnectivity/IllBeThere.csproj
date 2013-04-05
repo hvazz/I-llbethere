@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bar.cs" />
+    <Compile Include="BarHandler.cs" />
     <Compile Include="DatabaseConnectivity.cs" />
     <Compile Include="IDHolder.cs" />
     <Compile Include="OpeningHours.cs" />
