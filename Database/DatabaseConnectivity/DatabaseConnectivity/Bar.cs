@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace IllBeThere
 {
-    class Bar
+    class Bar : IDHolder
     {
-        private string barName;
-        private string barAddress;
-        private string image;
-        private AdditionalInfo addInfo;
         private SpecialDeal specDeal;
         private List<OpeningHours> openings;
         private double barEntryFee;
@@ -19,37 +15,44 @@ namespace IllBeThere
 
         public Bar()
         {
-            addInfo = new AdditionalInfo();
             specDeal = new SpecialDeal();
             openings = new List<OpeningHours>();            
         }
 
+        public string ID
+        {
+            get { return ID; }
+            set { ID = value; }
+        }
+
         public string Name
         {
-            get { return barName; }
-            set { barName = value;}
+            get { return Name; }
+            set { Name = value;}
         }
         
         public string Address
         {
-            get { return barAddress; }
-            set { barAddress = value; }
+            get { return Address; }
+            set { Address = value; }
         }
 
         public string Image
         {
-            get { return image; }
-            set { image = value; }
+            get { return Image; }
+            set { Image= value; }
         }
 
-        public string GetAdditionalInformationInfo()
+        public string ContactInfo
         {
-            return addInfo.Info;
+            get { return ContactInfo; }
+            set { ContactInfo = value; }
         }
 
-        public void SetAdditionalInformationInfo(string newInfo)
+        public string AdditionalInfo
         {
-            addInfo.Info = newInfo;
+            get { return AdditionalInfo; }
+            set { AdditionalInfo = value; }
         }
 
         public string GetSpecialDealInfo()
@@ -72,7 +75,7 @@ namespace IllBeThere
             specDeal.Image = newImage;
         }
 
-        public List<OpeningHours> GetRelevantOpeningHours()
+        /*public List<OpeningHours> GetRelevantOpeningHours()
         {
 
             List<OpeningHours> returnList = new List<OpeningHours>();
@@ -85,9 +88,9 @@ namespace IllBeThere
             }
 
             return returnList;
-        }
+        }*/
 
-        public OpeningHours GetSingleOpeningHouers(DateTime targetStart, DateTime targetEnd)
+        /*public OpeningHours GetSingleOpeningHouers(DateTime targetStart, DateTime targetEnd)
         {
             DateTime result = new DateTime();
 
@@ -99,14 +102,14 @@ namespace IllBeThere
             }
 
             return null;
-        }
+        }*/
         
         public List<OpeningHours> GetAllOpeningsHours()
         {
             return openings;
         }
 
-        public void DeleteOpeningHouers(List<OpeningHours> ohList)
+        /*public void DeleteOpeningHouers(List<OpeningHours> ohList)
         {
             foreach (OpeningHours oh in openings)
             {
@@ -115,7 +118,7 @@ namespace IllBeThere
                     if (DateTime.Compare(oh.Start, oh2.Start) == 0 && DateTime.Compare(oh.End, oh2.End) == 0) openings.Remove(oh);
                 }
             }
-        }
+        }*/
 
         public void AddOpeningHours(List<OpeningHours> ohList)
         { 

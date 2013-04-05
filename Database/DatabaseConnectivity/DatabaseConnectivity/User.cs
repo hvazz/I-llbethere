@@ -6,24 +6,43 @@ using System.Threading.Tasks;
 
 namespace IllBeThere
 {
-    class User
+    class User : IDHolder
     {
-
-        private string name;
 
         public User()
         { 
             
         }
 
-        public string Name
+        public int ID
         {
-            get { return name; }
-            set { name = value; }
+            get { return ID; }
+            set { ID = value; }
         }
 
+        public string ForeName
+        {
+            get { return ForeName; }//return name; }
+            set { ForeName = value; }
+        }
 
+        public string LastName
+        {
+            get { return LastName; }
+            set { LastName = value; }
+        }
 
+        public string PhoneNumber
+        {
+            get { return PhoneNumber; }
+            set { PhoneNumber = value; }
+        }
+
+        public string Email
+        {
+            get { return Email; }
+            set { Email = value; }
+        }
 
     }
 }

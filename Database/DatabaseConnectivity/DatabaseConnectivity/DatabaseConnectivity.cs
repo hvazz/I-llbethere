@@ -12,7 +12,12 @@ namespace IllBeThere
         private static DatabaseConnectivity instance;
         private SqlConnection connection;
         private string connectionString;
-        private enum Table { Bar="bartable", User="usertable", AdditionalInfo="add_info", OpeningHours="open_hours", SpecialDeals="spec_deal"}
+        public static enum Table {
+            Bar="bar", 
+            User="user", 
+            OpeningHour="opening_hour", 
+            SpecialDeal="special_deal", 
+            IllBeThere="ill_be_there"}
 
         public static DatabaseConnectivity GetInstance
         {
@@ -57,23 +62,29 @@ namespace IllBeThere
             else return false;
         }
 
-        private void ExecuteQuery(string query)
+        private bool ExecuteQuery(string query)
         {
             if (connection.State != System.Data.ConnectionState.Open) Connect();
-            if (connection.State != System.Data.ConnectionState.Open) ErrorMessage("Cannot open connection to server");
-            else
+            if (connection.State != System.Data.ConnectionState.Open)
             {
+                ErrorMessage("Cannot open connection to server");
+                return false;
+            } else {
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
                 CloseConnection();
+                return true;
             }
         }
 
         private SqlDataReader ExecuteReader(string query, string database)
         {
             if (connection.State != System.Data.ConnectionState.Open) Connect();
-            if (connection.State != System.Data.ConnectionState.Open) ErrorMessage("Cannot open connection to server");
-            else
+            if (connection.State != System.Data.ConnectionState.Open)
+            {
+                ErrorMessage("Cannot open connection to server");
+                return null;
+            }else
             {
                 try
                 {
@@ -82,7 +93,7 @@ namespace IllBeThere
                     //CloseConnection();
                     return reader;
                 }
-                catch (SqlException e) { ErrorMessage(e.ToString()); }
+                catch (SqlException e) { ErrorMessage(e.ToString());}
             }
             return null;
         }
@@ -92,110 +103,177 @@ namespace IllBeThere
             Console.Write(s);
         }
 
+        private int[] IntListToArray(List<int> list)
+        { 
+            int[] returnArray = new int[list.Count];
+
+            int toolInt = 0;
+            foreach (int s in list)
+            {
+                returnArray[toolInt] = s; ;
+                toolInt++;
+            }
+
+                return returnArray;
+        }
+
+        private string CombineIDs(List<int> incStrings)
+        {
+            string returnString = "";
+            int[] stringArray = IntListToArray(incStrings);
+
+            for (int i = 0 ; i<stringArray.Length;i++)
+            {
+                if (i == stringArray.Length - 1) returnString += stringArray[i];
+                else returnString += stringArray[i].ToString() +", ";
+            }
+
+            return returnString;
+        }
+
+        private List<int> ExtractId(List<IDHolder> IDHolders)
+        {
+            List<int> idList = new List<int>();
+
+            foreach (IDHolder b in IDHolders)
+            {
+                idList.Add(b.ID);
+            }
+
+            return idList;
+        }
+
 //***************************************************** CREATE *********************************************************
         public bool CreateBar(Bar bar)
         {
-            string query ="INSERT INTO "+Table.Bar+" (name, address, image, user, add_info, spec_deal, openings) Values()";
-            return false;
+            string query ="INSERT INTO "+Table.Bar+" (name, address, image, contact_info, additional_info)"+
+            " Values('"+bar.Name+"', '"+bar.Address+"', '"+bar.Image+"', '"+bar.ContactInfo+"', '"+bar.AdditionalInfo+"')";
+            return ExecuteQuery(query);
         }
 
-        public bool CreateUser(User user)
+        public void CreateUser(User user)
         {
-            return false;
+            string query = "INSERT INTO "+Table.User+" (fName, lName, phone, email,)"+
+            " Values('"+user.ForeName+"', '"+user.LastName+"', '"+user.PhoneNumber+"', '"+user.Email+"')";
+            ExecuteQuery(query);
         }
 
-        public bool CreateAdditionalInfo(AdditionalInfo addInfo)
+        public void CreateIllBeThere(User user, Bar bar, DateTime date)
         {
-            return false;
+            string query = "INSERT INTO "+Table.IllBeThere+" (user_id, bar_id, date)"+
+            " Values('"+user.ID+"', '"+bar.ID+"', '"+date+"')" ;
+            ExecuteQuery(query);
         }
 
-        public bool CreateOpeningHours(OpeningHours openHours)
+        public void CreateOpeningHours(OpeningHours openHours)
         {
-            return false;
+            string query = "INSERT INTO "+Table.OpeningHour+" (times, date )"+
+            " Values('"+openHours.Times+"', '"+openHours.Date+"')";
+            ExecuteQuery(query);
         }
 
-        public bool CreateSpecialDeals(SpecialDeal specialDeal)
+        public void CreateSpecialDeals(SpecialDeal specialDeal)
         {
-            return false;
+            string query = "INSERT INTO "+Table.SpecialDeal+" (string, from, to)"+
+            " Values('"+specialDeal.Info+"', '"+specialDeal.From+"', '"+specialDeal.To+"')";
+            ExecuteQuery(query);
         }
 //**********************************************************************************************************************
 //***************************************************** READ/GET (List) ************************************************
-        public bool GetBar(List<Bar> bars)
+        public void GetBarByID(List<Bar> bars)
         {
-            return false;
+            
         }
 
-        public bool GetUser(List<User> user)
+        public Bar GetBarByName(Bar bar)
         {
-            return false;
+
+
+            return null;
         }
 
-        public bool GetAdditionalInfo()
+        public void GetUserByID(List<User> user)
         {
-            return false;
+            
         }
 
-        public bool GetOpeningHours()
+        public User GetUserByName(User user)
         {
-            return false;
+
+
+            return null;
         }
 
-        public bool GetSpecialDeals()
+        public void GetIllBeThereByID(int id)
         {
-            return false;
+
+        }
+
+        public void GetOpeningHoursByID()
+        {
+            
+        }
+
+        public void GetSpecialDealsByID()
+        {
+            
         }
 //**********************************************************************************************************************
 //***************************************************** UPDATE/EDIT ****************************************************
-        public bool UpdateBar()
+        public void UpdateBar(List<Bar> bars)
         {
-            return false;
+            
         }
 
-        public bool UpdateUser()
+        public void UpdateUser()
         {
-            return false;
+            
         }
 
-        public bool UpdateAdditionalInfo()
+        public void UpdateIllBeThere(int id)
         {
-            return false;
+
         }
 
-        public bool UpdateOpeningHours()
+        public void UpdateOpeningHours()
         {
-            return false;
+            
         }
 
-        public bool UpdateSpecialDeals()
+        public void UpdateSpecialDeals()
         {
-            return false;
+            
         }
 //**********************************************************************************************************************
 //***************************************************** DELETE (List) **************************************************
-        public bool DeleteBar(List<Bar> bars)
+        public void DeleteEntries(List<IDHolder> ids, Table target)
         {
-            return false;
+            string toBeDeleted = CombineIDs(ExtractId(ids));
+            string query = "DELETE FROM "+target+" WHERE id In (" + toBeDeleted + ")";
+            ExecuteQuery(query);
         }
 
-        public bool DeleteUser()
+        /*
+        public void DeleteUser()
         {
-            return false;
+            
         }
 
-        public bool DeleteAdditionalInfo()
+        public void DeleteIllBeThere(int id)
         {
-            return false;
+
         }
 
-        public bool DeleteOpeningHours()
+        public void DeleteOpeningHours()
         {
-            return false;
+            
         }
 
-        public bool DeleteSpecialDeals()
+        public void DeleteSpecialDeals()
         {
-            return false;
+            
         }
+         * */
 //**********************************************************************************************************************
     }
 }

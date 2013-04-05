@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace IllBeThere
 {
-    class SpecialDeal
+    class SpecialDeal : IDHolder
     {
-
-        private string info;
-        private string image;
-
         public SpecialDeal()
         { 
             
@@ -19,14 +15,26 @@ namespace IllBeThere
 
         public string Info
         {
-            get { return info; }
-            set { info = value; }
+            get { return Info; }
+            set { Info = value; }
         }
 
         public string Image
         {
-            get { return image; }
-            set { image= value; }
+            get { return Image; }
+            set { Image= value; }
+        }
+
+        public DateTime From
+        {
+            get { return From; }
+            set { From = value; }
+        }
+
+        public DateTime To
+        {
+            get { return To; }
+            set { To = value; }
         }
     }
 }

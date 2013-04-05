@@ -6,28 +6,24 @@ using System.Threading.Tasks;
 
 namespace IllBeThere
 {
-    class OpeningHours
+    class OpeningHours : IDHolder
     {
-
-        private DateTime start;
-        private DateTime end;
 
         public OpeningHours()
         {
-            start = new DateTime();
-            end = new DateTime();
+
         }
 
-        public DateTime Start
+        public DateTime Date
         {
-            get { return start; }
-            set { start = value; }
+            get { return Date; }
+            set { Date = value; }
         }
 
-        public DateTime End
+        public string Times
         {
-            get { return end; }
-            set { end = value; }
+            get { return Times; }
+            set { Times = value; }
         }
     }
 }
