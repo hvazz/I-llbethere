@@ -6,21 +6,26 @@ using System.Threading.Tasks;
 
 namespace IllBeThere
 {
-    class Server
+    public class Server
     {
         static void Main(string[] args)
         {
             Server server = new Server();
-            
+
             //server.dbCon.CreateBar
             Console.ReadKey();
         }
 
         DatabaseConnectivity dbCon;
+        UserHandler userHandler;
+        BarHandler barHandler;
 
         public Server()
         {
-            dbCon = DatabaseConnectivity.GetInstance;
+            dbCon = DatabaseConnectivity.Instance;
+            userHandler = UserHandler.Instance;
+            barHandler = BarHandler.Instance;
+            
         }
     }
 }

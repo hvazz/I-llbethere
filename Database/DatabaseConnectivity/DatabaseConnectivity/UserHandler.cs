@@ -6,12 +6,23 @@ using System.Threading.Tasks;
 
 namespace IllBeThere
 {
-    class UserHandler
+    public class UserHandler
     {
 
-        public UserHandler()
-        { 
-            
+        List<User> users;
+
+        private UserHandler()
+        {
+            users = new List<User>();
+        }
+
+        public static UserHandler Instance
+        {
+            get
+            {
+                if (Instance == null) return new UserHandler();
+                else return Instance;
+            }
         }
 
         public User FindCurrentUser()

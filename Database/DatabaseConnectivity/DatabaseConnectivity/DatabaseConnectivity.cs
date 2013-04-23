@@ -19,12 +19,12 @@ namespace IllBeThere
             SpecialDeal="special_deal", 
             IllBeThere="ill_be_there"}
 
-        public static DatabaseConnectivity GetInstance
+        public static DatabaseConnectivity Instance
         {
             get
             {
-                if (instance == null) instance = new DatabaseConnectivity();
-                return instance;
+                if (Instance == null) return new DatabaseConnectivity();
+                return Instance;
             }
         }
 
